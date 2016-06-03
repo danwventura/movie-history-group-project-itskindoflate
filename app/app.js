@@ -24,5 +24,5 @@ app.config(function($routeProvider) {
       templateUrl: "partials/login.html",
       controller: "LoginCtrl"
     }).
-    otherwise("/");.
+    otherwise("/");
 });
