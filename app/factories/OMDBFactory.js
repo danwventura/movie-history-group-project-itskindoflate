@@ -1,6 +1,6 @@
 "use strict"
 
-app.factory("omdbFactory", function($q, $http){
+app.factory("OMDBFactory", function($q, $http){
 
   return {
     //Function to grab data from (json) OMDB API

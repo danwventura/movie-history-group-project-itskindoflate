@@ -8,6 +8,10 @@ app.config(function($routeProvider) {
       templateUrl: "partials/movieCard.html",
       controller: "OMDBSearchCtrl"
     }).
+    when("/myMovies", {
+      templateUrl: "partials/myMovie.html",
+      controller: "myMovieCtrl"
+    }).
     when("/watched", {
       templateUrl: "partials/movieCard.html",
       controller: "WatchedCtrl"
