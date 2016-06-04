@@ -1,4 +1,4 @@
-app.controller("OMDBSearchCtrl", function($scope, $location, omdbFactory){
+app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory){
 
 
   // omdbFactory.GetMoviesFromApi().then(function(moviesObject){
@@ -6,7 +6,7 @@ app.controller("OMDBSearchCtrl", function($scope, $location, omdbFactory){
   $scope.movieArray = [];
 
   $scope.dataCheck = function(){
-      omdbFactory.getMoviesFromApi().then(function(moviesObject){
+      OMDBFactory.getMoviesFromApi().then(function(moviesObject){
       console.log("moviesObject from factory promise", moviesObject);
 
     // $location.url('#/')
@@ -14,6 +14,5 @@ app.controller("OMDBSearchCtrl", function($scope, $location, omdbFactory){
       console.log("Movie Array", $scope.movieArray );
   })
   }
-
 
 });
