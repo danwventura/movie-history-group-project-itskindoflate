@@ -1,0 +1,28 @@
+<h1>Profile</h1>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <input type="text" name="omdbSearch" placeholder="Search OMDB">
+    <button>Search</button>
+
+    <input type="text" name="Search" placeholder="Search My Movies">
+    <button ng-click="dataCheck()">Search</button>
+  </div>
+
+  <div class="col-md-3 col-md-offset-4">
+    <button id="watched">Watched</button>
+
+    <button id="watchList">Watch List</button>
+
+
+  </div>
+</div>
+
+  <div class="movieCard" ng-repeat="movie in movieArray">
+   <div class="col-md-4">
+    <p>{{movie.Title}}</p>
+    <p>{{movie.Year}}</p>
+    <img src="{{movie.Poster}}" />
+    <button>Delete</button>
+  </div>
+
+  </div>
