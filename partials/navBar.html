@@ -1,11 +1,11 @@
 <h1>Movie History</h1>
-<div class="container">
+<div class="container" ng-controller="OMDBSearchCtrl">
   <div class="col-md-6 col-md-offset-3">
-    <input type="text" name="omdbSearch">
+    <input type="text" name="omdbSearch" placeholder="Search OMDB">
     <button>Search</button>
 
-    <input type="text" name="Search">
-    <button>Search</button>
+    <input type="text" name="Search" placeholder="Search My Movies">
+    <button ng-click="dataCheck()">Search</button>
   </div>
 
   <div class="col-md-3 col-md-offset-4">
