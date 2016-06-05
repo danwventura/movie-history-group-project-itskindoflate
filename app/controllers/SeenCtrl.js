@@ -1,6 +1,0 @@
-app.controller("SeenCtrl", function(){
-
-
-
-
-});
