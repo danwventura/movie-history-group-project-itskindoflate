@@ -23,14 +23,31 @@ app.factory("FirebaseFactory", function($q, $http){
     //   });
     // }
     toWatchListArray:[],
-      updateMoviesToWatchList: function (movie){
+
+    updateMoviesToWatchList: function (movie){
         this.toWatchListArray.push(movie);
       },
 
     haveWatchedListArray:[],
-      updateMoviesWatchedList: function (movie){
-        this.haveWatchedListArray.push(movie);
+
+    updateMoviesWatchedList: function (movie){
+      this.haveWatchedListArray.push(movie);
+    },
+
+    deleteToWatchListArrayItem: function(imdbID) {
+      for (var i = 0; i < this.toWatchListArray.length; i++) {
+        for (var key in this.toWatchListArray[i] ) {
+          if (this.toWatchListArray[i][key] === imdbID) {
+            this.toWatchListArray.splice(i, 1);
+            break;
+          };
+        }
       }
+    }
+
+
+
+
 
   }
 });

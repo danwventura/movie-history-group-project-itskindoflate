@@ -24,18 +24,8 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory){
   },
 
   $scope.DeleteMyMovieArrayItem = function(imdbID) {
-      for (var i = 0; i < $scope.myMovieArray.length; i++) {
-        for (var key in $scope.myMovieArray[i] ) {
-          if ($scope.myMovieArray[i][key] === imdbID) {
-            FirebaseFactory.updateMoviesToWatchList($scope.myMovieArray[i]);
-            $scope.myMovieArray.splice(i, 1);
-            break;
+            FirebaseFactory.deleteToWatchListArrayItem(imdbID);
+            $scope.myMovieArray = FirebaseFactory.toWatchListArray;
           };
-        }
-      }
-      console.log("FirebaseFactory.toWatchListArray",FirebaseFactory.toWatchListArray);
-    }
-
-
 
 });
