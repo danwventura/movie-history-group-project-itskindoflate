@@ -20,7 +20,8 @@
     <p>{{myMovie.Title}}</p>
     <p>{{myMovie.Year}}</p>
     <img src="{{myMovie.Poster}}" />
-    <button>Delete</button>
+    <!-- <button>Delete</button> -->
+    <button ng-click="DeleteMyMovieArrayItem(myMovie.imdbID)">Delete</button>
     <label>Rating</label>
     <select>
       <option>Choose</option>

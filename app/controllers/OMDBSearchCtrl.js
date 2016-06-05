@@ -1,4 +1,4 @@
-app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory){
+app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, FirebaseFactory){
 
 
   // omdbFactory.GetMoviesFromApi().then(function(moviesObject){
@@ -14,5 +14,23 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory){
       console.log("Movie Array", $scope.movieArray );
   })
   }
+
+  $scope.DeleteMovieArrayItem = function(imdbID) {
+      for (var i = 0; i < $scope.movieArray.length; i++) {
+        for (var key in $scope.movieArray[i] ) {
+          if ($scope.movieArray[i][key] === imdbID) {
+            FirebaseFactory.updateMoviesToWatchList($scope.movieArray[i]);
+            $scope.movieArray.splice(i, 1);
+            break;
+          };
+        }
+      }
+      console.log("FirebaseFactory.toWatchListArray",FirebaseFactory.toWatchListArray);
+    }
+
+
+
+
+
 
 });
