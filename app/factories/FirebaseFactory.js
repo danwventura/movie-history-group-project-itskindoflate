@@ -9,25 +9,66 @@ app.factory("FirebaseFactory", function($q, $http){
 
 
 
+    // getMoviesFromFirebase : function(){
+    //     var movies = {};
+    //   return $q(function(resolve, reject){
+    //     $http.get(`https://ng-bg-mh.firebaseio.com/movies.json`)
+    //       .success(function(moviesJson){
+    //           console.log("moviesJson in Factory", moviesJson );
+    //       movies = moviesJson
+    //       resolve();
+
+    //       })
+    //       .error(function(error){
+    //         reject(error);
+    //       })
+    //   });
+    // return movies
+
+    // },
+
     getMoviesFromFirebase : function(){
-        var movies = {};
+
+      var movies=[];
+
       return $q(function(resolve, reject){
         $http.get(`https://ng-bg-mh.firebaseio.com/movies.json`)
-          .success(function(moviesJson){
-              console.log("moviesJson in Factory", moviesJson );
-          movies = moviesJson
-          resolve();
-
+          .success(function(returnObject){
+              Object.keys(returnObject).forEach(function(key){
+              returnObject[key].id=key;
+              movies.push(returnObject[key]);
+          console.log("movies",movies );
+          });
+              resolve(movies);
           })
           .error(function(error){
-            reject(error);
-          })
+              reject(error);
+          });
       });
-    return movies
-
-
-
     },
+
+    putMoviesIntoFirebase : function (movie) {;
+
+      return $q(function(resolve,reject){
+          $http.post(`https://ng-bg-mh.firebaseio.com/movies.json`,
+              JSON.stringify({
+                  Title:movie.Title,
+                  Year:movie.Year,
+                  imdbID:movie.imdbID,
+                  Type:movie.Type,
+                  Poster:movie.Poster,
+                  Rating: "notRated",
+              }))
+          .success(function(response){
+              resolve(response);
+          })
+      })
+    },
+
+
+
+
+
 
 
 
@@ -55,10 +96,6 @@ app.factory("FirebaseFactory", function($q, $http){
         }
       }
     }
-
-
-
-
 
   }
 });
