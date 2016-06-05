@@ -13,7 +13,7 @@ app.config(function($routeProvider) {
       controller: "myMovieCtrl"
     }).
     when("/watched", {
-      templateUrl: "partials/movieCard.html",
+      templateUrl: "partials/watched.html",
       controller: "WatchedCtrl"
     }).
     when("/register", {

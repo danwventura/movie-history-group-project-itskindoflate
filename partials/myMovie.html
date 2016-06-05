@@ -5,11 +5,10 @@
     <button>Search</button>
 
     <input type="text" name="Search" placeholder="Search My Movies" ng-model="searchText">
-    <button ng-click="dataCheck()">Search</button>
   </div>
 
   <div class="col-md-3 col-md-offset-4">
-    <button id="watched">Watched</button>
+    <button id="watched"><a ng-href="#/watched">Watched</a></button>
 
     <button id="watchList"><a ng-href="#/myMovies">Watch List</a></button>
   </div>
@@ -23,14 +22,8 @@
     <!-- <button>Delete</button> -->
     <button ng-click="DeleteMyMovieArrayItem(myMovie.imdbID)">Delete</button>
     <label>Rating</label>
-    <select>
-      <option>Choose</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
+    <input type="text" name="rating" ng-model="rating">
+    <button ng-click="addMovieRating(myMovie.imdbID, rating)">Submit</button>
   </div>
 
   </div>

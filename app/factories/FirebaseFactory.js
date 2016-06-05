@@ -30,8 +30,12 @@ app.factory("FirebaseFactory", function($q, $http){
 
     haveWatchedListArray:[],
 
+
+//Movie comes into watched list with rating property 
+//How to display rating in seen view
     updateMoviesWatchedList: function (movie){
       this.haveWatchedListArray.push(movie);
+      console.log("haveWatchedListArray", this.haveWatchedListArray);
     },
 
     deleteToWatchListArrayItem: function(imdbID) {
