@@ -3,39 +3,56 @@
 app.factory("FirebaseFactory", function($q, $http){
 
   return {
-    //Function to grab data from  (firbase eventually)
-    // getMoviesFromApi : function(){
-    //   let movies = [];
-    //   return $q(function(resolve, reject){
-    //     $http.get(`./data/movies.json`)
-    //       .success(function(moviesJson){
-    //         let moviesObject = moviesJson.Search
-    //         Object.keys(moviesObject).forEach(function(key){
-    //           // moviesObject[key].imdbID = key;
-    //           console.log("key", key);
-    //           movies.push(moviesObject[key]);
-    //         });
-    //         resolve(movies);
-    //       })
-    //       .error(function(error){
-    //         reject(error);
-    //       })
-    //   });
-    // }
+
     toWatchListArray:[],
+
+    haveWatchedListArray:[],
+
+    getMoviesFromFirebase : function() {
+
+      return $q( (resolve, reject) => {
+        $http.get(`https://ng-bg-mh.firebaseio.com/movies.json`)
+          .success( (returnObject) => {
+            resolve(returnObject);
+        }).then( (returnObject) => {
+          Object.keys(returnObject.data).forEach( (key) => {
+            if (returnObject.data[key].userRating === "null") {
+              this.updateMoviesToWatchList(returnObject.data[key])
+            } else {
+              this.updateMoviesWatchedList(returnObject.data[key])
+            };
+          });
+        })
+      })
+    },
+
+
+    putMoviesIntoFirebase : function (movie) {;
+
+      return $q(function(resolve,reject){
+          $http.post(`https://ng-bg-mh.firebaseio.com/movies.json`,
+              JSON.stringify({
+                  Title:movie.Title,
+                  Year:movie.Year,
+                  imdbID:movie.imdbID,
+                  Type:movie.Type,
+                  Poster:movie.Poster,
+                  Rating: "notRated",
+              }))
+          .success(function(response){
+              resolve(response);
+          })
+      })
+    },
 
     updateMoviesToWatchList: function (movie){
         this.toWatchListArray.push(movie);
       },
 
-    haveWatchedListArray:[],
-
-
-//Movie comes into watched list with rating property 
+//Movie comes into watched list with rating property
 //How to display rating in seen view
     updateMoviesWatchedList: function (movie){
       this.haveWatchedListArray.push(movie);
-      console.log("haveWatchedListArray", this.haveWatchedListArray);
     },
 
     deleteToWatchListArrayItem: function(imdbID) {
@@ -48,10 +65,6 @@ app.factory("FirebaseFactory", function($q, $http){
         }
       }
     }
-
-
-
-
 
   }
 });

@@ -3,11 +3,10 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory){
   $scope.myMovieArray = [];
 
   function myMovieList(){
+    
+    FirebaseFactory.getMoviesFromFirebase();
     $scope.myMovieArray = FirebaseFactory.toWatchListArray;
-    console.log("My Movie Array", $scope.myMovieArray );
   }
-
-  myMovieList();
 
   $scope.addMovieRating = function(imdbID, rating) {
     for (var i = 0; i < $scope.myMovieArray.length; i++) {
@@ -27,5 +26,7 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory){
             FirebaseFactory.deleteToWatchListArrayItem(imdbID);
             $scope.myMovieArray = FirebaseFactory.toWatchListArray;
           };
+
+  myMovieList();
 
 });
