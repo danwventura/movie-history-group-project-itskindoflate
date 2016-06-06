@@ -3,28 +3,9 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory){
   $scope.myMovieArray = [];
 
   function myMovieList(){
-    let moviesJson = FirebaseFactory.getMoviesFromFirebase();
-
-    console.log("moviesJson", moviesJson);
-
-
-    Object.keys(moviesJson).forEach(function(key){
-      console.log("key", key);
-      console.log("movieJson Key", moviesJson[key]);
-
-      if (moviesJson[key].userRating === "null" ){
-          FirebaseFactory.updateMoviesToWatchList(movieJson[key]);
-        }else {
-          FirebaseFactory.updateMoviesWatchedList(moviesJson[key]);
-        }
-    });
-
-
-
-
-
+    
+    FirebaseFactory.getMoviesFromFirebase();
     $scope.myMovieArray = FirebaseFactory.toWatchListArray;
-    console.log("My Movie Array", $scope.myMovieArray );
   }
 
   $scope.addMovieRating = function(imdbID, rating) {

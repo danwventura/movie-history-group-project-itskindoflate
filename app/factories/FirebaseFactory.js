@@ -3,49 +3,29 @@
 app.factory("FirebaseFactory", function($q, $http){
 
   return {
-    //Function to grab data from  (firebase eventually)
+
     toWatchListArray:[],
+
     haveWatchedListArray:[],
 
+    getMoviesFromFirebase : function() {
 
-
-    // getMoviesFromFirebase : function(){
-    //     var movies = {};
-    //   return $q(function(resolve, reject){
-    //     $http.get(`https://ng-bg-mh.firebaseio.com/movies.json`)
-    //       .success(function(moviesJson){
-    //           console.log("moviesJson in Factory", moviesJson );
-    //       movies = moviesJson
-    //       resolve();
-
-    //       })
-    //       .error(function(error){
-    //         reject(error);
-    //       })
-    //   });
-    // return movies
-
-    // },
-
-    getMoviesFromFirebase : function(){
-
-      var movies=[];
-
-      return $q(function(resolve, reject){
+      return $q( (resolve, reject) => {
         $http.get(`https://ng-bg-mh.firebaseio.com/movies.json`)
-          .success(function(returnObject){
-              Object.keys(returnObject).forEach(function(key){
-              returnObject[key].id=key;
-              movies.push(returnObject[key]);
-          console.log("movies",movies );
+          .success( (returnObject) => {
+            resolve(returnObject);
+        }).then( (returnObject) => {
+          Object.keys(returnObject.data).forEach( (key) => {
+            if (returnObject.data[key].userRating === "null") {
+              this.updateMoviesToWatchList(returnObject.data[key])
+            } else {
+              this.updateMoviesWatchedList(returnObject.data[key])
+            };
           });
-              resolve(movies);
-          })
-          .error(function(error){
-              reject(error);
-          });
-      });
+        })
+      })
     },
+
 
     putMoviesIntoFirebase : function (movie) {;
 
@@ -65,25 +45,14 @@ app.factory("FirebaseFactory", function($q, $http){
       })
     },
 
-
-
-
-
-
-
-
-
     updateMoviesToWatchList: function (movie){
         this.toWatchListArray.push(movie);
       },
-
-
 
 //Movie comes into watched list with rating property
 //How to display rating in seen view
     updateMoviesWatchedList: function (movie){
       this.haveWatchedListArray.push(movie);
-      console.log("haveWatchedListArray", this.haveWatchedListArray);
     },
 
     deleteToWatchListArrayItem: function(imdbID) {
