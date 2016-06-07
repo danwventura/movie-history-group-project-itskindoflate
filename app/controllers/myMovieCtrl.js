@@ -3,7 +3,7 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory){
   $scope.myMovieArray = [];
 
   function myMovieList(){
-    
+    FirebaseFactory.clearMoviesToWatchlist();
     FirebaseFactory.getMoviesFromFirebase();
     $scope.myMovieArray = FirebaseFactory.toWatchListArray;
   }
