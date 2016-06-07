@@ -28,18 +28,14 @@ app.factory("FirebaseFactory", function($q, $http){
       })
     },
 
-    putMoviesIntoFirebase : function (movie) {;
+    putMoviesIntoFirebase : function (movie) {
+          console.log(" movie.id", movie.id);
+          console.log(" movie.userRating ", movie.userRating);
       return $q(function(resolve,reject){
-          $http.post(`https://ng-bg-mh.firebaseio.com/movies.json`,
-              JSON.stringify({
-                  Title:movie.Title,
-                  Year:movie.Year,
-                  imdbID:movie.imdbID,
-                  Poster:movie.Poster,
-                  userRating: "notRated",
-                  uid: "null"
-              }))
+
+          $http.put(`https://ng-bg-mh.firebaseio.com/movies/${movie.id}.json`, movie)
           .success(function(response){
+            console.log("res", response);
               resolve(response);
           })
       })
