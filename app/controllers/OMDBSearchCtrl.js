@@ -6,6 +6,7 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
   $scope.movieArray = [];
 
   $scope.dataCheck = function(searchTerm){
+      
       OMDBFactory.getMoviesFromApi(searchTerm).then(function(moviesObject){
       console.log("moviesObject from factory promise", moviesObject);
 
@@ -19,7 +20,10 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
       for (var i = 0; i < $scope.movieArray.length; i++) {
         for (var key in $scope.movieArray[i] ) {
           if ($scope.movieArray[i][key] === imdbID) {
-            FirebaseFactory.updateMoviesToWatchList($scope.movieArray[i]);
+            
+            FirebaseFactory.putMoviesIntoFirebase($scope.movieArray[i])
+
+            // FirebaseFactory.updateMoviesToWatchList($scope.movieArray[i]);
             $scope.movieArray.splice(i, 1);
             break;
           };

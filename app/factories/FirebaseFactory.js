@@ -16,7 +16,7 @@ app.factory("FirebaseFactory", function($q, $http){
             resolve(returnObject);
         }).then( (returnObject) => {
           Object.keys(returnObject.data).forEach( (key) => {
-            if (returnObject.data[key].userRating === "null") {
+            if (returnObject.data[key].userRating === "notRated") {
               this.updateMoviesToWatchList(returnObject.data[key])
             } else {
               this.updateMoviesWatchedList(returnObject.data[key])
@@ -35,9 +35,9 @@ app.factory("FirebaseFactory", function($q, $http){
                   Title:movie.Title,
                   Year:movie.Year,
                   imdbID:movie.imdbID,
-                  Type:movie.Type,
                   Poster:movie.Poster,
-                  Rating: "notRated",
+                  userRating: "notRated",
+                  uid: "null"
               }))
           .success(function(response){
               resolve(response);
@@ -45,8 +45,13 @@ app.factory("FirebaseFactory", function($q, $http){
       })
     },
 
+    clearMoviesToWatchlist: function (){
+        this.toWatchListArray.splice(0)
+
+    },
+
     updateMoviesToWatchList: function (movie){
-        this.toWatchListArray.push(movie);
+      this.toWatchListArray.push(movie);
       },
 
 //Movie comes into watched list with rating property
