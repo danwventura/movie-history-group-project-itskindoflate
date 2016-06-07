@@ -21,7 +21,7 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
         for (var key in $scope.movieArray[i] ) {
           if ($scope.movieArray[i][key] === imdbID) {
             
-            FirebaseFactory.putMoviesIntoFirebase($scope.movieArray[i])
+            FirebaseFactory.postMoviesIntoFirebase($scope.movieArray[i])
 
             // FirebaseFactory.updateMoviesToWatchList($scope.movieArray[i]);
             $scope.movieArray.splice(i, 1);
