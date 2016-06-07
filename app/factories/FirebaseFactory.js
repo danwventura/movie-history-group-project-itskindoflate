@@ -17,8 +17,10 @@ app.factory("FirebaseFactory", function($q, $http){
         }).then( (returnObject) => {
           Object.keys(returnObject.data).forEach( (key) => {
             if (returnObject.data[key].userRating === "notRated") {
+              returnObject.data[key].id = key;
               this.updateMoviesToWatchList(returnObject.data[key])
             } else {
+              returnObject.data[key].id = key;
               this.updateMoviesWatchedList(returnObject.data[key])
             };
           });
@@ -26,9 +28,7 @@ app.factory("FirebaseFactory", function($q, $http){
       })
     },
 
-
     putMoviesIntoFirebase : function (movie) {;
-
       return $q(function(resolve,reject){
           $http.post(`https://ng-bg-mh.firebaseio.com/movies.json`,
               JSON.stringify({
@@ -60,15 +60,28 @@ app.factory("FirebaseFactory", function($q, $http){
       this.haveWatchedListArray.push(movie);
     },
 
-    deleteToWatchListArrayItem: function(imdbID) {
-      for (var i = 0; i < this.toWatchListArray.length; i++) {
-        for (var key in this.toWatchListArray[i] ) {
-          if (this.toWatchListArray[i][key] === imdbID) {
-            this.toWatchListArray.splice(i, 1);
-            break;
-          };
-        }
+    deleteToWatchListArrayItem: function(sentID) {
+      return $q((resolve,reject) => {
+          $http.delete(`https://ng-bg-mh.firebaseio.com/movies/${sentID}.json`)
+          .success((response)=>{
+              resolve(response);
+          })
+      }).then( () => {
+
+        for (var i = 0; i < this.toWatchListArray.length; i++) {
+          for (var key in this.toWatchListArray[i] ) {
+              console.log("Key", key);
+              console.log("toWatchListArray", this.toWatchListArray[i])
+            if (this.toWatchListArray[i][key] === sentID) {
+              this.toWatchListArray.splice(i, 1);
+              break;
+            };
+          }
       }
+
+        
+      })
+
     }
 
   }
