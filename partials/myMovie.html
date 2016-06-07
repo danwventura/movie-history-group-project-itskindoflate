@@ -20,7 +20,7 @@
     <p>{{myMovie.Year}}</p>
     <img src="{{myMovie.Poster}}" />
     <!-- <button>Delete</button> -->
-    <button ng-click="DeleteMyMovieArrayItem(myMovie.imdbID)">Delete</button>
+    <button ng-click="DeleteMyMovieArrayItem(myMovie.id)">Delete</button>
     <label>Rating</label>
     <input type="text" name="rating" ng-model="rating">
     <button ng-click="addMovieRating(myMovie.imdbID, rating)">Submit</button>
