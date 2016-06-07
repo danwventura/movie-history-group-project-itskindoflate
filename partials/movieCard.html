@@ -17,7 +17,7 @@
  <div class="col-md-4">
   <p>{{movie.Title}}</p>
   <p>{{movie.Year}}</p>
-  <img src="{{movie.Poster}}"/>
+  <img ng-src={{movie.Poster}}>
    <button ng-click="DeleteMovieArrayItem(movie.imdbID)">Add to Watch List</button>
 </div>
 

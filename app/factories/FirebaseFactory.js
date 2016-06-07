@@ -1,17 +1,17 @@
 "use strict"
 
-app.factory("FirebaseFactory", function($q, $http){
+app.factory("FirebaseFactory", function($q, $http, AuthFactory){
 
   return {
 
     toWatchListArray:[],
-
     haveWatchedListArray:[],
 
     getMoviesFromFirebase : function() {
+      let user = AuthFactory.getUser();
 
       return $q( (resolve, reject) => {
-        $http.get(`https://ng-bg-mh.firebaseio.com/movies.json`)
+        $http.get(`https://ng-bg-mh.firebaseio.com/movies.json?orderBy="uid"&equalTo="${user.uid}"`)
           .success( (returnObject) => {
             resolve(returnObject);
         }).then( (returnObject) => {
@@ -41,9 +41,27 @@ app.factory("FirebaseFactory", function($q, $http){
       })
     },
 
-    clearMoviesToWatchlist: function (){
-        this.toWatchListArray.splice(0)
+    postMoviesIntoFirebase : function (movie) {;
+      let user = AuthFactory.getUser();
+      return $q(function(resolve,reject){
+          $http.post(`https://ng-bg-mh.firebaseio.com/movies.json`,
+              JSON.stringify({
+                  Title:movie.Title,
+                  Year:movie.Year,
+                  imdbID:movie.imdbID,
+                  Poster:movie.Poster,
+                  userRating: "notRated",
+                  uid:  user.uid
+              }))
+          .success(function(response){
+              resolve(response);
+          })
+      })
+    },
 
+    clearMoviesToWatchlist: function (){
+      this.toWatchListArray.splice(0);
+      this.haveWatchedListArray.splice(0);
     },
 
     updateMoviesToWatchList: function (movie){
@@ -75,7 +93,7 @@ app.factory("FirebaseFactory", function($q, $http){
           }
       }
 
-        
+
       })
 
     }

@@ -18,8 +18,8 @@
    <div class="col-md-4">
     <p>{{myMovie.Title}}</p>
     <p>{{myMovie.Year}}</p>
-    <img src="{{myMovie.Poster}}" />
-    <!-- <button>Delete</button> -->
+    <img ng-src={{myMovie.Poster}}>
+
     <button ng-click="DeleteMyMovieArrayItem(myMovie.id)">Delete</button>
     <label>Rating</label>
     <input type="text" name="rating" ng-model="rating">
