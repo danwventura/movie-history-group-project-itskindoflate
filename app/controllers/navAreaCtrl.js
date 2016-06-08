@@ -16,7 +16,6 @@ app.controller("navAreaCtrl", function($scope, $location, NavFactory, FirebaseFa
     $scope.watchedMovieArrayEmpty = NavFactory.getWatchedMovieArrayEmpty();
   });
 
-
   $scope.$watch(AuthFactory.getUser, function(newValue, oldValue) {
     if (newValue !== oldValue) {
       FirebaseFactory.getMoviesFromFirebase();

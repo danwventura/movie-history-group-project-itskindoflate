@@ -27,8 +27,9 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
         for (var key in $scope.movieArray[i] ) {
           if ($scope.movieArray[i][key] === imdbID) {
             
-            FirebaseFactory.postMoviesIntoFirebase($scope.movieArray[i])
-            FirebaseFactory.getMoviesFromFirebase();
+            FirebaseFactory.postMoviesIntoFirebase($scope.movieArray[i]);
+            NavFactory.setMyMovieArrayEmpty(false);
+            // FirebaseFactory.getMoviesFromFirebase();
             $scope.movieArray.splice(i, 1);
             break;
           };

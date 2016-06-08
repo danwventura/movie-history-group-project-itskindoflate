@@ -4,11 +4,12 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFa
   NavFactory.setOnMyOrWatchedMovies(true);
   NavFactory.setPageTitle("My Movies Page");
 
-  $scope.searchText = "Blank";
+  // $scope.searchText = "";
 
   $scope.myMovieArray = [];
 
   function myMovieList(){
+    console.log("myMovieListRunning")
     FirebaseFactory.clearMoviesToWatchlist();
     FirebaseFactory.getMoviesFromFirebase();
     $scope.myMovieArray = FirebaseFactory.toWatchListArray;
