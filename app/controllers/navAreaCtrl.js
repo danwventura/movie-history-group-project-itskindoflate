@@ -47,11 +47,6 @@ app.controller("navAreaCtrl", function($scope, $location, NavFactory, FirebaseFa
   }
 
   $scope.updateOMDBSearchString = function(sentOMDBSearchString) {
-
-    if ($location.url() !== "/") {
-      $location.url("/");
-    }
-
     NavFactory.setOMDBSearchInput(sentOMDBSearchString);
     $scope.omdbSearch = "";
   }
