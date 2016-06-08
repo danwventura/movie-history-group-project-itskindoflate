@@ -6,7 +6,6 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
   NavFactory.setOnLogin(false);
   NavFactory.setPageTitle("OMDB Search Page");
 
-
   $scope.movieArray = [];
 
   $scope.dataCheck = function(searchTerm){
@@ -18,7 +17,7 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
 
   $scope.$watch(NavFactory.getOMDBSearchInput, function(newValue, oldValue) {
     if (newValue !== oldValue) {
-      $scope.dataCheck(NavFactory.getOMDBSearchInput());
+      $scope.dataCheck(NavFactory.getOMDBSearchInput())
     }
   })
 
@@ -29,7 +28,6 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
             
             FirebaseFactory.postMoviesIntoFirebase($scope.movieArray[i]);
             NavFactory.setMyMovieArrayEmpty(false);
-            // FirebaseFactory.getMoviesFromFirebase();
             $scope.movieArray.splice(i, 1);
             break;
           };

@@ -68,6 +68,5 @@ app.factory('NavFactory', function() {
       watchedMovieArrayEmpty = sentMovieFlag;
     }
 
-
   };
 });

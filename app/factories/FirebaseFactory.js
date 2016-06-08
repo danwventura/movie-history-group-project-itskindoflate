@@ -91,6 +91,7 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
               console.log("toWatchListArray", this.toWatchListArray[i])
             if (this.toWatchListArray[i][key] === sentID) {
               this.toWatchListArray.splice(i, 1);
+              
               if (this.toWatchListArray.length === 0) {
                 NavFactory.setMyMovieArrayEmpty(true);
               }
