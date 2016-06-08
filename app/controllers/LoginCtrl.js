@@ -1,8 +1,9 @@
 'use strict';
-app.controller("LoginCtrl", function($scope, $rootScope, $location, firebaseURL, AuthFactory){
+app.controller("LoginCtrl", function($scope, $rootScope, $location, firebaseURL, AuthFactory, NavFactory){
 
+  NavFactory.setOnLogin(true);
+  NavFactory.setPageTitle("");
   // $scope.welcome = "hello world";
-
   let ref = new Firebase(firebaseURL);
   // console.log("ref",  ref);
 

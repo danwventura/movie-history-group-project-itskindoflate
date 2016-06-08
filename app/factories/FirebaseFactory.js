@@ -1,6 +1,6 @@
 "use strict"
 
-app.factory("FirebaseFactory", function($q, $http, AuthFactory){
+app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
 
   return {
 
@@ -19,9 +19,11 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory){
             if (returnObject.data[key].userRating === "notRated") {
               returnObject.data[key].id = key;
               this.updateMoviesToWatchList(returnObject.data[key])
+              NavFactory.setMyMovieArrayEmpty(false);
             } else {
               returnObject.data[key].id = key;
               this.updateMoviesWatchedList(returnObject.data[key])
+              NavFactory.setWatchedMovieArrayEmpty(false);
             };
           });
         })
@@ -88,6 +90,10 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory){
               console.log("toWatchListArray", this.toWatchListArray[i])
             if (this.toWatchListArray[i][key] === sentID) {
               this.toWatchListArray.splice(i, 1);
+              
+              if (this.toWatchListArray.length === 0) {
+                NavFactory.setMyMovieArrayEmpty(true);
+              }
               break;
             };
           }

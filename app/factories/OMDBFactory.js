@@ -5,8 +5,9 @@ app.factory("OMDBFactory", function($q, $http){
   return {
     //Function to grab data from (json) OMDB API
     getMoviesFromApi : function(searchTerm){
-      console.log("searchTerm", searchTerm);
+
       let movies = [];
+
       return $q(function(resolve, reject){
         $http.get(`http://www.omdbapi.com/?s=${searchTerm}&y=&type=&r=json`)
           .success(function(moviesJson){
