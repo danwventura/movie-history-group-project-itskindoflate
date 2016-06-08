@@ -20,8 +20,8 @@
             <button ng-click="updateMovieSearchString(movieSearch)" ng-hide="!hideShowMovieSearch">Search</button>
         </div>
         <div class="col-md-3 col-md-offset-4">
-          <a ng-href="#/watched" class="btn btn-default">Watched</a>
-          <a ng-href="#/myMovies" class="btn btn-default">Watch List</a>
+          <a ng-href="#/watched" class="btn btn-default" ng-hide="watchedMovieArrayEmpty">Watched List</a>
+          <a ng-href="#/myMovies" class="btn btn-default" ng-hide="myMovieArrayEmpty">To Watch List</a>
         </div>
         </div>
       </div>

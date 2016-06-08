@@ -14,8 +14,6 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFa
     $scope.myMovieArray = FirebaseFactory.toWatchListArray;
   }
 
-
-
   $scope.addMovieRating = function(imdbID, rating) {
     for (var i = 0; i < $scope.myMovieArray.length; i++) {
       for (var key in $scope.myMovieArray[i] ) {

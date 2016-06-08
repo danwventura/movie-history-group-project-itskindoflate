@@ -1,6 +1,6 @@
 "use strict"
 
-app.factory("FirebaseFactory", function($q, $http, AuthFactory){
+app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
 
   return {
 
@@ -19,9 +19,11 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory){
             if (returnObject.data[key].userRating === "notRated") {
               returnObject.data[key].id = key;
               this.updateMoviesToWatchList(returnObject.data[key])
+              NavFactory.setMyMovieArrayEmpty(false);
             } else {
               returnObject.data[key].id = key;
               this.updateMoviesWatchedList(returnObject.data[key])
+              NavFactory.setWatchedMovieArrayEmpty(false);
             };
           });
         })

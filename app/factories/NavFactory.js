@@ -7,6 +7,8 @@ app.factory('NavFactory', function() {
   var OMDBSearchInput = null;
   var movieSearchInput = null;
   var pageTitle = "";
+  var myMovieArrayEmpty = true;
+  var watchedMovieArrayEmpty = true;
 
   return {
     getOnLogin: function() {
@@ -48,8 +50,23 @@ app.factory('NavFactory', function() {
 
     setMovieSearchInput: function(sentMovieSearch) {
       movieSearchInput = sentMovieSearch;
-    }
+    },
 
+    getMyMovieArrayEmpty: function() {
+      return myMovieArrayEmpty;
+    },
+
+    setMyMovieArrayEmpty: function(sentMovieFlag) {
+      myMovieArrayEmpty = sentMovieFlag;
+    },
+
+    getWatchedMovieArrayEmpty: function() {
+      return watchedMovieArrayEmpty;
+    },
+
+    setWatchedMovieArrayEmpty: function(sentMovieFlag) {
+      watchedMovieArrayEmpty = sentMovieFlag;
+    }
 
 
   };

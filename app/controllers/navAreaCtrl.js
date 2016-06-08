@@ -1,9 +1,27 @@
-app.controller("navAreaCtrl", function($scope, $location, NavFactory){
+app.controller("navAreaCtrl", function($scope, $location, NavFactory, FirebaseFactory, AuthFactory){
 
   $scope.loginStatus = NavFactory.getOnLogin();
   $scope.hideShowMovieSearch = false;
+  $scope.myMovieArrayEmpty = true;
+  $scope.watchedMovieArrayEmpty = true;
+  $scope.hideShowWatchedMovieButton = true;
   $scope.pageTitle = null;
   $scope.omdbSearch = "";
+
+  $scope.$watch(NavFactory.getMyMovieArrayEmpty, function() {
+    $scope.myMovieArrayEmpty = NavFactory.getMyMovieArrayEmpty();
+  });
+
+  $scope.$watch(NavFactory.getWatchedMovieArrayEmpty, function() {
+    $scope.watchedMovieArrayEmpty = NavFactory.getWatchedMovieArrayEmpty();
+  });
+
+
+  $scope.$watch(AuthFactory.getUser, function(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      FirebaseFactory.getMoviesFromFirebase();
+    }
+  });
 
   $scope.$watch(NavFactory.getOnLogin, function(){
     $scope.loginStatus = NavFactory.getOnLogin();
