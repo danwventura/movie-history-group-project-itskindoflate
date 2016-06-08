@@ -74,7 +74,6 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
 //How to display rating in seen view
     updateMoviesWatchedList: function (movie){
       this.haveWatchedListArray.push(movie);
-      console.log(movie);
     },
 
     deleteToWatchListArrayItem: function(sentID) {

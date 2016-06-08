@@ -7,6 +7,7 @@ app.controller("navAreaCtrl", function($scope, $location, NavFactory, FirebaseFa
   $scope.hideShowWatchedMovieButton = true;
   $scope.pageTitle = null;
   $scope.omdbSearch = "";
+  $scope.movieSearch = "";
 
   $scope.$watch(NavFactory.getMyMovieArrayEmpty, function() {
     $scope.myMovieArrayEmpty = NavFactory.getMyMovieArrayEmpty();
@@ -34,6 +35,10 @@ app.controller("navAreaCtrl", function($scope, $location, NavFactory, FirebaseFa
     $scope.hideShowMovieSearch = NavFactory.getOnMyOrWatchedMovies();
   });
 
+  $scope.changingText = function(sentText) {
+    NavFactory.setMovieSearchInput(sentText);
+  };
+
   $scope.changeLocation = function() {
     if ($location.url !== "/") {
       $location.url("/");
@@ -45,8 +50,6 @@ app.controller("navAreaCtrl", function($scope, $location, NavFactory, FirebaseFa
     NavFactory.setOMDBSearchInput(sentOMDBSearchString);
     $scope.omdbSearch = "";
   }
-
-
 
 });
 

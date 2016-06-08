@@ -4,9 +4,15 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFa
   NavFactory.setOnMyOrWatchedMovies(true);
   NavFactory.setPageTitle("My Movies Page");
 
-  // $scope.searchText = "";
-
   $scope.myMovieArray = [];
+  
+  $scope.searchText = "";
+
+  $scope.$watch(NavFactory.getMovieSearchInput, function(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      $scope.searchText = NavFactory.getMovieSearchInput();
+    }
+  });
 
   function myMovieList(){
     console.log("myMovieListRunning")
@@ -32,7 +38,7 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFa
         };
       }
     }
-  },
+  };
 
   $scope.DeleteMyMovieArrayItem = function(imdbID) {
     FirebaseFactory.deleteToWatchListArrayItem(imdbID);

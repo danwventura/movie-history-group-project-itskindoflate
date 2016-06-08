@@ -6,4 +6,13 @@ app.controller("WatchedCtrl", function($scope, FirebaseFactory, NavFactory){
 
   $scope.watchedMovies = FirebaseFactory.haveWatchedListArray;
 
+  $scope.searchText = "";
+
+  $scope.$watch(NavFactory.getMovieSearchInput, function(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      $scope.searchText = NavFactory.getMovieSearchInput();
+    }
+  });
+
 });
+    
