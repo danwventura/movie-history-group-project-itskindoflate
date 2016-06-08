@@ -1,4 +1,8 @@
-app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory){
+app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFactory){
+
+  NavFactory.setOnLogin(false);
+  NavFactory.setPageTitle("My Movies Page");
+
 
   $scope.myMovieArray = [];
 

@@ -1,20 +1,25 @@
-app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, FirebaseFactory){
-
+app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, FirebaseFactory, NavFactory){
 
   // omdbFactory.GetMoviesFromApi().then(function(moviesObject){
   //   console.log("moviesObject from factory promise", moviesObject);
+
+  NavFactory.setOnLogin(false);
+  NavFactory.setPageTitle("OMDB Search Page");
+
   $scope.movieArray = [];
 
   $scope.dataCheck = function(searchTerm){
       
       OMDBFactory.getMoviesFromApi(searchTerm).then(function(moviesObject){
-      console.log("moviesObject from factory promise", moviesObject);
-
-    // $location.url('#/')
       $scope.movieArray = moviesObject;
-      console.log("Movie Array", $scope.movieArray );
+    })
+  };
+
+  $scope.$watch(NavFactory.getOMDBSearchInput, function(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      $scope.dataCheck(NavFactory.getOMDBSearchInput());
+    }
   })
-  }
 
   $scope.DeleteMovieArrayItem = function(imdbID) {
       for (var i = 0; i < $scope.movieArray.length; i++) {
@@ -31,10 +36,5 @@ app.controller("OMDBSearchCtrl", function($scope, $location, OMDBFactory, Fireba
       }
       console.log("FirebaseFactory.toWatchListArray",FirebaseFactory.toWatchListArray);
     }
-
-
-
-
-
 
 });

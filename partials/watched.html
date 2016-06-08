@@ -1,21 +1,3 @@
-<h1>Profile</h1>
-<div class="container">
-  <div class="col-md-6 col-md-offset-3">
-    <input type="text" name="omdbSearch" placeholder="Search OMDB">
-    <button>Search</button>
-
-    <input type="text" name="Search" placeholder="Search My Movies" ng-model="searchText">
-  </div>
-
-  <div class="col-md-3 col-md-offset-4">
-    <button id="watched">Watched</button>
-
-    <button id="watchList"><a ng-href="#/myMovies">Watch List</a></button>
-
-
-  </div>
-</div>
-
   <div class="movieCard" ng-repeat="movie in watchedMovies | filter: searchText">
    <div class="col-md-4">
     <p>Title: {{movie.Title}}</p>
