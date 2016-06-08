@@ -16,8 +16,8 @@
         <div class="col-md-6 col-md-offset-3">
           <input type="text" name="omdbSearch" placeholder="Search OMDB" ng-model="omdbSearch" ng-focus="changeLocation()">
             <button ng-click="updateOMDBSearchString(omdbSearch)">Search</button>
-          <input type="text" name="movieSearch" placeholder="Search MyMovies" ng-model="movieSearch">
-            <button ng-click="updateMovieSearchString(movieSearch)">Search</button>
+          <input type="text" name="movieSearch" placeholder="Search MyMovies" ng-hide="!hideShowMovieSearch" ng-model="movieSearch">
+            <button ng-click="updateMovieSearchString(movieSearch)" ng-hide="!hideShowMovieSearch">Search</button>
         </div>
         <div class="col-md-3 col-md-offset-4">
           <a ng-href="#/watched" class="btn btn-default">Watched</a>

@@ -1,8 +1,10 @@
 app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFactory){
 
   NavFactory.setOnLogin(false);
+  NavFactory.setOnMyOrWatchedMovies(true);
   NavFactory.setPageTitle("My Movies Page");
 
+  $scope.searchText = "Blank";
 
   $scope.myMovieArray = [];
 

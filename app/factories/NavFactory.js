@@ -3,6 +3,7 @@
 app.factory('NavFactory', function() {
 
   var onLogin = true;
+  var onMyOrWatchedMovies = false;
   var OMDBSearchInput = null;
   var movieSearchInput = null;
   var pageTitle = "";
@@ -15,6 +16,14 @@ app.factory('NavFactory', function() {
     setOnLogin: function(sentValue) {
         onLogin = sentValue;
       return onLogin
+    },
+
+    getOnMyOrWatchedMovies: function() {
+      return onMyOrWatchedMovies;
+    },
+
+    setOnMyOrWatchedMovies: function(sentValue) {
+      onMyOrWatchedMovies = sentValue;
     },
 
     getPageTitle: function() {

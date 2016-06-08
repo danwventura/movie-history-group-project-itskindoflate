@@ -1,6 +1,7 @@
 app.controller("navAreaCtrl", function($scope, $location, NavFactory){
 
   $scope.loginStatus = NavFactory.getOnLogin();
+  $scope.hideShowMovieSearch = false;
   $scope.pageTitle = null;
   $scope.omdbSearch = "";
 
@@ -12,9 +13,14 @@ app.controller("navAreaCtrl", function($scope, $location, NavFactory){
     $scope.pageTitle = NavFactory.getPageTitle();
   });
 
+  $scope.$watch(NavFactory.getOnMyOrWatchedMovies, function(){
+    $scope.hideShowMovieSearch = NavFactory.getOnMyOrWatchedMovies();
+  });
+
   $scope.changeLocation = function() {
     if ($location.url !== "/") {
       $location.url("/");
+      NavFactory.setOnMyOrWatchedMovies(false);
     }
   }
 
