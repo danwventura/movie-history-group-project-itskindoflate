@@ -1,13 +1,15 @@
-<section>
-  <h2>Login or Register</h2>
-  <div>
-    Email: <input type="text" autofocus="true" ng-model="account.email">
-  </div>
-  <div>
-    Password: <input type="password" ng-model="account.password">
-  </div>
-  <div>
-    <button class="btn btn-info" ng-click="login()">LOGIN</button>
-    <button class="btn btn-default" ng-click="register()">REGISTER</button>
-  </div>
-</section>
+<div class="col-md-4 col-md-offset-4 text-center">
+  <section class="login">
+    <h2>Login or Register</h2>
+    <div>
+      Email: <input type="text" autofocus="true" ng-model="account.email" class="emailEntry">
+    </div>
+    <div>
+      Password: <input type="password" ng-model="account.password" class="passwordEntry">
+    </div>
+    <div>
+      <button class="btnLogin btn btn-info" ng-click="login()">LOGIN</button>
+      <button class="btnReg btn btn-default" ng-click="register()">REGISTER</button>
+    </div>
+  </section>
+</div>
