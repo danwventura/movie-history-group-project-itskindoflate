@@ -1,9 +1,6 @@
-  <div class="movieCard" ng-repeat="movie in watchedMovies | filter: searchText">
-   <div class="col-md-4">
-    <p>Title: {{movie.Title}}</p>
-    <p>Year: {{movie.Year}}</p>
-    <p>Rating: {{movie.userRating}}</p>
+  <div class=" col-md-3 movieCard" ng-repeat="movie in watchedMovies | filter: searchText">
+    <p class="movie">Title: {{movie.Title}}</p>
+    <p class="movie">Year: {{movie.Year}}</p>
+    <p class="movie">Rating: {{movie.userRating}}</p>
     <img class="activator" ng-src={{movie.Poster}} err-src="img/noImage.png">
-  </div>
-  
   </div>

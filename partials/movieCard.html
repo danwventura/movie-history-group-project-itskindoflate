@@ -1,9 +1,7 @@
-<div class="movieCard" ng-repeat="movie in movieArray">
- <div class="col-md-4 movieDetails">
-  <p>{{movie.Title}}</p>
-  <p>{{movie.Year}}</p>
+<div class=" col-md-3 movieCard" ng-repeat="movie in movieArray">
+  <p class="movie">{{movie.Title}}</p>
+  <p class="movie">{{movie.Year}}</p>
   <img class="activator" ng-src={{movie.Poster}} err-src="img/noImage.png">
    <button ng-click="DeleteMovieArrayItem(movie.imdbID)">Add to Watch List</button>
 </div>
 
-</div>
