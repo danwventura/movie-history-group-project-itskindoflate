@@ -58,7 +58,7 @@ Review the [basic design](https://app.moqups.com/chortlehoort/uGBbLbK46Y/view/pa
 
 ### Screenshot of Login ![Screenshot](/img/login.png)
 
-### Screenshot of Movie Search ![Screenshot](/img/ombdsearch.png)
+### Screenshot of Movie Search ![Screenshot](/img/omdbsearch.png)
 
 ### Screenshot of Movie Search Return  ![Screenshot](/img/searchresults.png)
 
