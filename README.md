@@ -5,7 +5,7 @@ You will be split up into teams of three, and your team will build a new applica
 # Team Name: It's Kinda Late
 
 ## Contributors:
--[Bern Anderson](https://gtihub.com/bernardanderson)
+-[Bernard Anderson](https://gtihub.com/bernardanderson)
 -[Dan Ventura](https://github.com/danwventura)
 -[Teriq Perry](https://github.com/jtmp2r)
 -[Bradley Guthrie](https://github.com/guthb) -- Team Leader
