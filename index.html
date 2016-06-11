@@ -14,23 +14,24 @@
 
     <nav>
       <div class="container searchBar" ng-hide="loginStatus">
-      <div class="row" >
+      <div class="row">
       <a ng-href="#/login" class="btn btn-default">LogOut</a>
-        <div class="col m6 offset-3">
+        <div class="col m3">
           <form  class="searchbox" ng-submit="updateOMDBSearchString(omdbSearch)"><input type="text" name="omdbSearch" placeholder="Search OMDB" ng-model="omdbSearch" ng-focus="changeLocation()" >
-            <!-- <button ng-click="updateOMDBSearchString(omdbSearch)">Search</button> -->
             </form>
-          <input type="text" name="movieSearch" placeholder="Search MyMovies" ng-hide="!hideShowMovieSearch" ng-model="movieSearch" ng-change="changingText(movieSearch)">
+        
         </div>
-        <div class="col m3 offset-4">
           <a ng-href="#/watched" class="btn btn-default" ng-hide="watchedMovieArrayEmpty">Watched List</a>
           <a ng-href="#/myMovies" class="btn btn-default" ng-hide="myMovieArrayEmpty">To Watch List</a>
-        </div>
+          <div class="col m3">
+          <input type="text" name="movieSearch" placeholder="Search MyMovies" ng-hide="!hideShowMovieSearch" ng-model="movieSearch" ng-change="changingText(movieSearch)">
+          </div>
         </div>
       </div>
     </nav>
-
-    <h1>{{pageTitle}}</h1>
+    <div>
+      <h1>{{pageTitle}}</h1>
+    </div>
   </div>
 
   <div ng-view></div>

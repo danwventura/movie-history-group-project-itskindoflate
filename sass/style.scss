@@ -65,6 +65,7 @@ margin-top: 2px;
 
 .searchBar{
   position:absolute;
+  // display:inline-block;
   top: -19px;
   left: auto;
   right: auto;
@@ -72,6 +73,10 @@ margin-top: 2px;
 
 .searchbox{
   margin-left:10px;
+}
+
+.buttons{
+  display:inline;
 }
 
 // .mockmodal {
