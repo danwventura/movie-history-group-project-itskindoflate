@@ -1,10 +1,12 @@
-<div class="col-md-3 movieCard" ng-repeat="myMovie in myMovieArray | filter: searchText">
-  <p class="movie">{{myMovie.Title}}</p>
-  <p class="movie">{{myMovie.Year}}</p>
-  <img class="activator" ng-src={{myMovie.Poster}} err-src="img/noImage.png">
-  <label class="input">Rating
-    <input type="text" name="rating" ng-model="rating">
-  </label>
-  <button ng-click="DeleteMyMovieArrayItem(myMovie.id)">Delete</button>
-  <button ng-click="addMovieRating(myMovie.imdbID, rating)">Submit</button>
+<div class="scroll">
+  <div class="col-md-3 movieCard" ng-repeat="myMovie in myMovieArray | filter: searchText">
+    <p class="movie">{{myMovie.Title}}</p>
+    <p class="movie">{{myMovie.Year}}</p>
+    <img class="activator" ng-src={{myMovie.Poster}} err-src="img/noImage.png">
+    <label class="input">Rating
+      <input type="text" name="rating" ng-model="rating">
+    </label>
+    <button ng-click="DeleteMyMovieArrayItem(myMovie.id)">Delete</button>
+    <button ng-click="addMovieRating(myMovie.imdbID, rating)">Submit</button>
+  </div>
 </div>
