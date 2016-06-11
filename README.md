@@ -5,18 +5,36 @@ You will be split up into teams of three, and your team will build a new applica
 # Team Name: It's Kinda Late
 
 ## Contributors:
--[Bern Anderson](https://gtihub.com/bernardanderson)
+-[Bernard Anderson](https://gtihub.com/bernardanderson)
 -[Dan Ventura](https://github.com/danwventura)
 -[Teriq Perry](https://github.com/jtmp2r)
 -[Bradley Guthrie](https://github.com/guthb) -- Team Leader
 
 ### Setup
-
 You will need a simple web server to host this, Node.js worked well for us:
-1. For Macintosh systems, at the termial promt: ``` $ npm install http-server -g ```
-1. at the prompt make a directory for hosting ``` $ mkdir  movieHistory
-1. Change to the directory you plan to host the application ``` $ cd movieHistory/ ```
-1. Now start your web server ```` http-server -p ```
+
+clone down repo
+cd into /lib
+```
+$ cd lib/
+$ npm install
+$ bower install
+```
+in root of  application
+
+```
+$ http-server -p 8080
+```
+in lib/
+
+```
+$ gulp
+```
+
+This will show at in your browser of choice:
+'http://localhost:8080'
+
+For developers do all:   open new terminal cd lib and gulp ( to see errors)
 
 ## Requirements
 1. Must have the ability to register a user in Firebase
@@ -38,11 +56,13 @@ You will need a simple web server to host this, Node.js worked well for us:
 
 Review the [basic design](https://app.moqups.com/chortlehoort/uGBbLbK46Y/view/page/a3a0e7bf6) and ask questions to your product owner for clarification, or ideas on features.
 
-## Screenshot of Login ![Screenshot](/img/login.png)
+### Screenshot of Login ![Screenshot](/img/login.png)
 
-### Screenshot of Movie Search ![Screenshot](/img/ombd.png)
+### Screenshot of Movie Search ![Screenshot](/img/omdbsearch.png)
 
-### Screenshot of To Watch List ![Screenshot](/img/myMovies.png)
+### Screenshot of Movie Search Return  ![Screenshot](/img/searchresults.png)
 
-### Screenshot of Watched Movie List ![Screenshot](/img/watched.png)
+### Screenshot of To Watch List ![Screenshot](/img/towatchlist.png)
+
+### Screenshot of Watched Movie List ![Screenshot](/img/watchedlist.png)
 

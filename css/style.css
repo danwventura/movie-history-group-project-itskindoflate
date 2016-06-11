@@ -2,10 +2,17 @@ h1 {
   text-align: center; }
 
 img {
+<<<<<<< HEAD
   height: 75%;
   max-width: 100%;
   display: block;
   padding-bottom: 60px;
+=======
+  height: 60%;
+  max-width: 100%;
+  display: block;
+  padding-bottom: 30px;
+>>>>>>> master
   margin-left: auto;
   margin-right: auto; }
 
@@ -14,7 +21,11 @@ img {
   padding-bottom: 10px; }
 
 .movieCard {
+<<<<<<< HEAD
   height: 500px;
+=======
+  height: 75vh;
+>>>>>>> master
   text-align: center;
   border: black solid 2px;
   margin: 2%;
@@ -39,14 +50,19 @@ img {
   margin-bottom: 2px; }
 
 .movie {
+<<<<<<< HEAD
   font-size: 14px;
   font-weight: bold; }
+=======
+  font-size: 14px; }
+>>>>>>> master
 
 .input {
   display: block; }
 
 .container {
   padding-top: 15px; }
+<<<<<<< HEAD
 
 .searchBar {
   position: absolute;
@@ -56,3 +72,5 @@ img {
 
 .searchbox {
   margin-left: 10px; }
+=======
+>>>>>>> master
