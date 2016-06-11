@@ -44,12 +44,12 @@ app.controller("navAreaCtrl", function($scope, $location, NavFactory, FirebaseFa
       $location.url("/");
       NavFactory.setOnMyOrWatchedMovies(false);
     }
-  }
+  };
 
   $scope.updateOMDBSearchString = function(sentOMDBSearchString) {
     NavFactory.setOMDBSearchInput(sentOMDBSearchString);
     $scope.omdbSearch = "";
-  }
+  };
 
 });
 

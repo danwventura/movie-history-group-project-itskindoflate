@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
 
@@ -18,32 +18,29 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
           Object.keys(returnObject.data).forEach( (key) => {
             if (returnObject.data[key].userRating === "notRated") {
               returnObject.data[key].id = key;
-              this.updateMoviesToWatchList(returnObject.data[key])
+              this.updateMoviesToWatchList(returnObject.data[key]);
               NavFactory.setMyMovieArrayEmpty(false);
             } else {
               returnObject.data[key].id = key;
-              this.updateMoviesWatchedList(returnObject.data[key])
+              this.updateMoviesWatchedList(returnObject.data[key]);
               NavFactory.setWatchedMovieArrayEmpty(false);
-            };
+            }
           });
-        })
-      })
+        });
+      });
     },
 
     putMoviesIntoFirebase : function (movie) {
-          console.log(" movie.id", movie.id);
-          console.log(" movie.userRating ", movie.userRating);
       return $q(function(resolve,reject){
 
           $http.put(`https://ng-bg-mh.firebaseio.com/movies/${movie.id}.json`, movie)
           .success(function(response){
-            console.log("res", response);
               resolve(response);
-          })
-      })
+          });
+      });
     },
 
-    postMoviesIntoFirebase : function (movie) {;
+    postMoviesIntoFirebase : function (movie) {
       let user = AuthFactory.getUser();
       return $q(function(resolve,reject){
           $http.post(`https://ng-bg-mh.firebaseio.com/movies.json`,
@@ -57,8 +54,8 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
               }))
           .success(function(response){
               resolve(response);
-          })
-      })
+          });
+      });
     },
 
     clearMoviesToWatchlist: function (){
@@ -81,13 +78,11 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
           $http.delete(`https://ng-bg-mh.firebaseio.com/movies/${sentID}.json`)
           .success((response)=>{
               resolve(response);
-          })
+          });
       }).then( () => {
 
         for (var i = 0; i < this.toWatchListArray.length; i++) {
           for (var key in this.toWatchListArray[i] ) {
-              console.log("Key", key);
-              console.log("toWatchListArray", this.toWatchListArray[i])
             if (this.toWatchListArray[i][key] === sentID) {
               this.toWatchListArray.splice(i, 1);
               
@@ -95,14 +90,14 @@ app.factory("FirebaseFactory", function($q, $http, AuthFactory, NavFactory){
                 NavFactory.setMyMovieArrayEmpty(true);
               }
               break;
-            };
+            }
           }
       }
 
 
-      })
+      });
 
     }
 
-  }
+  };
 });

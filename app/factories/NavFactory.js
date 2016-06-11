@@ -17,7 +17,7 @@ app.factory('NavFactory', function() {
 
     setOnLogin: function(sentValue) {
         onLogin = sentValue;
-      return onLogin
+      return onLogin;
     },
 
     getOnMyOrWatchedMovies: function() {
