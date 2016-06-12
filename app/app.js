@@ -5,13 +5,11 @@ var app = angular.module("MovieHistory", ["ngRoute"])
 
 let isAuth = (AuthFactory) => new  Promise ((resolve, reject) =>  {
   if (AuthFactory.isAuthenticated()){
-    console.log("User is authenticated resolve route promise");
     resolve();
   } else {
-    console.log("User is not authenticated, reject route promise");
     reject();
   }
-})
+});
 
 app.config(function($routeProvider) {
   $routeProvider.
@@ -65,10 +63,8 @@ app.run(($location) => {
   let addressRef = new Firebase('https://ng-bg-mh.firebaseio.com/');
   addressRef.unauth();
   addressRef.onAuth( authData => {
-    console.log("RUN");
     if(!authData) {
-      console.log("after auth check");
       $location.path('/login');
     }
-  }) //firebase method
+  }); //firebase method
 });

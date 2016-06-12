@@ -15,7 +15,6 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFa
   });
 
   function myMovieList(){
-    console.log("myMovieListRunning")
     FirebaseFactory.clearMoviesToWatchlist();
     FirebaseFactory.getMoviesFromFirebase();
     $scope.myMovieArray = FirebaseFactory.toWatchListArray;
@@ -33,9 +32,9 @@ app.controller("myMovieCtrl", function($scope, $location, FirebaseFactory, NavFa
 
           if ($scope.myMovieArray.length === 0) {
             NavFactory.setMyMovieArrayEmpty(true);
-          };
+          }
           break;
-        };
+        }
       }
     }
   };
