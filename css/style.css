@@ -14,8 +14,10 @@ img {
   padding-bottom: 10px; }
 
 .movieCard {
-  height: 75vh;
+  height: 590px;
   text-align: center;
+  width: 25%;
+  display: inline-block;
   border: black solid 2px;
   margin: 2%;
   padding-top: 25px; }
@@ -39,10 +41,23 @@ img {
   margin-bottom: 2px; }
 
 .movie {
-  font-size: 14px; }
+  font-size: 14px;
+  font-weight: bold; }
 
 .input {
   display: block; }
 
 .container {
   padding-top: 15px; }
+
+.searchBar {
+  position: absolute;
+  top: -19px;
+  left: auto;
+  right: auto; }
+
+.searchbox {
+  margin-left: 10px; }
+
+.buttons {
+  display: inline; }

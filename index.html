@@ -2,34 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="./lib/bower_components/bootstrap/dist/css/bootstrap.css">
+  <!-- <link rel="stylesheet" type="text/css" href="./lib/bower_components/bootstrap/dist/css/bootstrap.css">
+   --><!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <title>Document</title>
 </head>
-<body ng-app="MovieHistory">
+<body ng-app="MovieHistory" ng-cloak>  <!-- ask about cloak-->
+
   <div ng-controller="navAreaCtrl">
+
     <nav>
-      <div class="container" ng-hide="loginStatus">
-      <div class="row" >
+      <div class="container searchBar" ng-hide="loginStatus">
+      <div class="row">
       <a ng-href="#/login" class="btn btn-default">LogOut</a>
-        <div class="col-md-6 col-md-offset-3">
-          <input type="text" name="omdbSearch" placeholder="Search OMDB" ng-model="omdbSearch" ng-focus="changeLocation()">
-            <button ng-click="updateOMDBSearchString(omdbSearch)">Search</button>
-          <input type="text" name="movieSearch" placeholder="Search MyMovies" ng-hide="!hideShowMovieSearch" ng-model="movieSearch" ng-change="changingText(movieSearch)">
+        <div class="col m3">
+          <form  class="searchbox" ng-submit="updateOMDBSearchString(omdbSearch)"><input type="text" name="omdbSearch" placeholder="Search OMDB" ng-model="omdbSearch" ng-focus="changeLocation()" >
+            </form>
+        
         </div>
-        <div class="col-md-3 col-md-offset-4">
           <a ng-href="#/watched" class="btn btn-default" ng-hide="watchedMovieArrayEmpty">Watched List</a>
           <a ng-href="#/myMovies" class="btn btn-default" ng-hide="myMovieArrayEmpty">To Watch List</a>
-        </div>
+          <div class="col m3">
+          <input type="text" name="movieSearch" placeholder="Search MyMovies" ng-hide="!hideShowMovieSearch" ng-model="movieSearch" ng-change="changingText(movieSearch)">
+          </div>
         </div>
       </div>
     </nav>
+
     <h1>{{pageTitle}}</h1>
+
   </div>
   <div ng-view></div>
 
+
+
   <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
+   <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="./lib/bower_components/firebase/firebase.js"></script>
